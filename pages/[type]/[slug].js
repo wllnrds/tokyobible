@@ -33,9 +33,7 @@ function Block({ data, isRoot = false, extra = 0 }){
 
 const Page = ( data ) => {
     const { item = null, refer = null } = data
-    return <div className={ styles.page }>
-        item && <Block data={ item } isRoot={true} />
-    </div>
+    return <div className={ styles.page }>{ item && <Block data={ item } isRoot={true} /> }</div>
 }
 
 const query_default = groq`*[_type == "rule" && slug.current == $slug && type.ref in *[_type == "contentType" && slug.current == $type].id ][0]{ ... , "type": type -> name, "origin": origin[]{page,"source": source->name } }`;
