@@ -1,0 +1,121 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+.main {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+}
+
+.search{
+	display: flex;
+	max-width: 640px;
+	width: 100%;
+	padding: 2rem;
+	margin: 0 auto;
+
+	input{
+		padding: 1rem;
+		flex:1;
+		box-sizing: border-box;
+		flex-shrink: 0;
+		width: 1px;
+		height: min-content; /* 75px */
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		padding: 24px 24px 24px 24px;
+		box-shadow: 0px 0.6032302072222955px 0.6032302072222955px -1.25px rgba(0, 0, 0, 0.18), 0px 2.290210571630906px 2.290210571630906px -2.5px rgba(0, 0, 0, 0.15887), 0px 10px 10px -3.75px rgba(0, 0, 0, 0.0625);
+		background-color: #ffffff;
+		overflow: visible;
+		flex: 1 0 0px;
+		position: relative;
+		align-content: center;
+		flex-wrap: nowrap;
+		gap: 10;
+		border-radius: 24px;
+		border: 1px solid rgba(0, 0, 0, 0.08);
+		transition: all 400ms linear;
+		outline: none;
+
+		&:active, &:focus{ 
+			border-color: var(--main-color);
+			box-shadow: 0px 0px 0px -1.875px rgba(0, 0, 0, 0.17), 0px 0px 0px -3.75px rgba(0, 0, 0, 0.0625);
+		}
+	}
+}
+
+.grade {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 auto;
+	width: 100%;
+
+	@media (max-width:480px) { max-width: 100%;  }
+	@media (min-width:481px) and (max-width:1024px) { grid-template-columns: repeat(2, 1fr); }
+	@media (min-width:1025px) { max-width: 80vw; grid-template-columns: repeat(3, 1fr); }
+
+	.item{
+		height: 8rem;
+		display: flex;
+		flex-direction: column;
+		color: #fff;
+		min-width: 300px;
+		flex:1;
+		transition: all 400ms linear;
+
+		&.purple{
+			background-color: #6939D0;			
+			&:hover{ background-color: #4e24a7; }
+		}
+		&.green{
+			background-color: #1DE245;			
+			&:hover{ background-color: #0eb930; }
+		}
+		&.magenta{
+			background-color: #dd285e;			
+			&:hover{ background-color: #ac1442; }
+		}
+
+		a{
+			outline: none;
+			flex-direction: column;
+			display: flex;
+			flex: 1;
+			align-items: center;
+			align-content: center;
+			justify-content: center;
+
+			white-space: pre;
+			position: relative;
+			font-weight: 700;
+			font-style: normal;
+			font-family: "Inria Sans", sans-serif;
+			color: #ffffff;
+			font-size: 24px;
+			letter-spacing: 0px;
+			line-height: 1.5;
+			text-transform: uppercase;
+		}
+	}
+}
+
+.footer {
+	height: fit-content;
+	display: flex;
+	padding: 2rem 0;
+	border-top: 1px solid #eaeaea;
+	justify-content: center;
+	align-items: center;
+}
+
+.footer a {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-grow: 1;
+}

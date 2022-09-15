@@ -1,0 +1,91 @@
+.page{
+	padding: 48px 24px 24px 24px
+}
+
+.list{
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.block{
+	font-weight: 300;
+	font-style: normal;
+	font-family: "Inria Sans", sans-serif;
+	color: #000000;
+	font-size: 16px;
+	letter-spacing: 0px;
+	line-height: 1.5;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+
+	hr{
+		margin: 24px 0;
+		border: none;
+		height: 1px;
+		background-color: rgba(0, 0, 0, 16%);
+	}
+
+	p{ margin: 0; }
+	
+	.tag{
+		font-weight: 400;
+		font-style: normal;
+		color: #1b86f8;
+		font-size: 12px;
+		letter-spacing: 1px;
+		line-height: 1.2;
+		text-transform: uppercase;
+
+		&.vantagem{
+			color: #0cf55a
+		}
+	}
+
+	.title{
+		font-weight: 400;
+		font-style: normal;
+		color: #000000;
+		font-size: 20px;
+		letter-spacing: 0px;
+		line-height: 1.2;
+		padding: 0px;
+		margin:0px;
+	}
+
+	.value{
+		font-weight: 400;
+		color: rgba(0, 0, 0, 0.5);
+		font-size: 14px;
+		letter-spacing: 0px;
+		line-height: 1.2;
+	  
+	}
+
+	.description{
+		code{
+			font-size: 12px;
+			padding: 4px;
+			letter-spacing: 0px;
+			line-height: 1.5;
+			background-color: aliceblue;
+			border-radius: 4px;
+			word-wrap: normal;
+			white-space: nowrap;
+		}
+		p + p{
+			margin-top: 16px;
+		}
+	}
+
+	.footer {
+		font-weight: 300;
+		font-style: normal;
+		font-family: "Inria Sans", sans-serif;
+		color: rgba(0, 0, 0, 0.37);
+		font-size: 12px;
+		letter-spacing: 0px;
+		line-height: 1.2;
+	}
+}
