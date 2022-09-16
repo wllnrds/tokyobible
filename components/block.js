@@ -5,7 +5,7 @@ import styles from './Block.module.scss'
 export default function Block({ data, isRoot = false, extra = 0 }){
     const router = useRouter()   
     const isActive = router.asPath.endsWith(data._id)
-    return (<section className={ `${ styles.block } ${ isActive && styles.active }`} id={ data._id }>
+    return (<section className={ `${ styles.block } ${ isActive ? styles.active : '' }`} id={ data._id }>
         <header>
             { isRoot && <div className={ `${ styles.tag } ${ data.type_slug }` }>{ data.type }</div> }
             { isRoot && <h1 className={ styles.title }>{ data.name || "Sem nome"}</h1> }
