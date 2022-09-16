@@ -44,8 +44,8 @@ export async function getStaticProps(context) {
     let data = null
     let item = await client.fetch(query_default, { slug, type })
 
-    if( item && item.group ){
-        const group = await client.fetch(query_group, { group: item.group._ref });
+    if( slug.includes('::') ){
+        const group = await client.fetch(query_group, { group: item.group._ref })        
         data = {
             item: group,
             refer: item._id
