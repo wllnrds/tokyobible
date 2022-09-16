@@ -1,5 +1,12 @@
-.page{
-	padding: 48px 24px 24px 24px
+.container{
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+
+	& > * + *{
+		padding-top: 16px;
+		border-top: 1px solid rgba(0, 0, 0, 6%);
+	}
 }
 
 .list{
@@ -18,7 +25,17 @@
 	line-height: 1.5;
 	display: flex;
 	flex-direction: column;
+	padding: 16px;
 	gap: 8px;
+
+	&[href]:hover{
+		background-color: #e8f8ff;
+	}
+
+	.active{
+		border: 1px solid #1b86f8;
+		border-radius: 16px;
+	}
 
 	hr{
 		margin: 24px 0;
