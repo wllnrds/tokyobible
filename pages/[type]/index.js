@@ -6,7 +6,7 @@ import Container from '../../components/container'
 import Block from '../../components/resume'
 
 const query_path = groq`*[_type == "contentType" && defined(slug.current)]{ "type": slug.current }`
-const query_default = groq`*[_type == "rule" && type->slug.current == $type]{ _id, "name" : coalesce(group->name + " :: ", "") + name , "group": group->name, "type": type -> name, "type_slug" : type->slug.current, "slug": slug.current, "description" : description[0] } | order(name)`;
+const query_default = groq`*[_type == "rule" && type->slug.current == $type]{ _id, "name" : coalesce(group->name + " :: ", "") + name , "group": group->name, "type": type -> name, "type_slug" : type->slug.current, "slug": slug.current, "description" : description[0] } | order(slug)`;
 
 export default function Page({ data }){
     return <Container>{ data && data.map( item => <Block key={ item._id } data={ item } /> ) }</Container>
