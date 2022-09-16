@@ -17,9 +17,7 @@
 
 .block{
 	font-weight: 300;
-	font-style: normal;
-	font-family: "Inria Sans", sans-serif;
-	color: #000000;
+	color: var(--text-color) ;
 	font-size: 16px;
 	letter-spacing: 0px;
 	line-height: 1.5;
@@ -28,12 +26,13 @@
 	padding: 16px;
 	gap: 8px;
 
-	&[href]:hover{
-		background-color: #e8f8ff;
+	&[href]:hover, &[href]:active{
+		overflow: hidden;
+		background-color: var(--main-highlight);
 	}
 
 	.active{
-		border: 1px solid #1b86f8;
+		border: 1px solid var(--main-color);
 		border-radius: 16px;
 	}
 
@@ -48,8 +47,7 @@
 	
 	.tag{
 		font-weight: 400;
-		font-style: normal;
-		color: #1b86f8;
+		color: var(--main-color);
 		font-size: 12px;
 		letter-spacing: 1px;
 		line-height: 1.2;
@@ -63,7 +61,6 @@
 	.title{
 		font-weight: 400;
 		font-style: normal;
-		color: #000000;
 		font-size: 20px;
 		letter-spacing: 0px;
 		line-height: 1.2;
@@ -73,7 +70,7 @@
 
 	.value{
 		font-weight: 400;
-		color: rgba(0, 0, 0, 0.5);
+		color: var(--text-sub-color);
 		font-size: 14px;
 		letter-spacing: 0px;
 		line-height: 1.2;
@@ -86,7 +83,7 @@
 			padding: 4px;
 			letter-spacing: 0px;
 			line-height: 1.5;
-			background-color: aliceblue;
+			background-color: var(--main-highlight);
 			border-radius: 4px;
 			word-wrap: normal;
 			white-space: nowrap;
@@ -99,8 +96,7 @@
 	.footer {
 		font-weight: 300;
 		font-style: normal;
-		font-family: "Inria Sans", sans-serif;
-		color: rgba(0, 0, 0, 0.37);
+		color: var(--text-footer);
 		font-size: 12px;
 		letter-spacing: 0px;
 		line-height: 1.2;
