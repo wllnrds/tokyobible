@@ -1,0 +1,21 @@
+.breadcumbs{
+    font-weight: 500;
+    font-family: 'Open Sans', sans-serif;
+    text-transform: uppercase;
+    font-size: 14px;
+    display: flex;
+    margin-bottom: 16px;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+
+    .item{
+        font-weight: 500;
+        text-transform: uppercase;
+        font-size: 14px;
+
+        &.active{
+            color: var(--text-color-grade-2);
+        }
+    }
+}

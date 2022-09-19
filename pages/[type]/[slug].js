@@ -1,17 +1,39 @@
 import groq from 'groq'
 
 import client from '../../client'
-import Layout from '../../components/layout'
-import Container from '../../components/container'
-import Block from '../../components/block'
+import Layout, { Page as ContentPage, Main, Breadcumbs, ViewBlock } from '../../components/layout'
 
 const query_path = groq`*[_type == "rule" && defined(slug.current)]{ "slug": slug.current, "type": type->slug.current }`
-const query_default = groq`*[_type == "rule" && slug.current == $slug && type.ref in *[_type == "contentType" && slug.current == $type].id ][0]{ ... , "type": type -> name, "origin": origin[]{page,"source": source->name } }`;
-const query_group = groq`*[_type == "ruleGroup" && _id == $group]{...,"rules":*[_type=='rule' && references(^._id)]}[0]{ ... , "type" : type -> name, "rules": rules[]{...,"type": type->name,"origin": origin[]{page,"source": source->name}} }`;
-export default function Page( data ){
-    const { item = null, refer = null } = data
-    return <Container>{ item && <Block data={ item } isRoot={true} /> }</Container>
+const query_default = groq`*[_type == "rule" && slug.current == $slug && type.ref in *[_type == "contentType" && slug.current == $type].id ][0]{ ... , "type": type -> name, "type_slug": type->slug.current,"origin": origin[]{page,"source": source->name } }`;
+const query_group = groq`*[_type == "ruleGroup" && _id == $group]{...,"type_slug": type->slug.current,"rules":*[_type=='rule' && references(^._id)]}[0]{ ... , "type" : type -> name, "rules": rules[]{...,"type": type->name,"type_slug": type->slug.current,"origin": origin[]{page,"source": source->name}} }`;
+
+export default function Page({ item, refer}) {
+	return (
+		item && <>
+			<Main>
+			    <ViewBlock.Header title={ item.name } type={ item.type } theme={ item.type_slug }/>
+				<Breadcumbs data={ [ { text: "Início", href: "/" } , { text: item.name, active: true } ] } />
+                <ViewBlock.Value value={ item.value } theme={ item.type_slug } />
+				<ContentPage.Description value={ item.description } />
+                <ViewBlock.List>
+                    {
+                        item.rules?.map( subitem => {
+                            return <ViewBlock.SubItem key={ subitem._id } id={ subitem._id } title={ subitem.name } theme={ item.type_slug }>
+                                    <ViewBlock.Value value={ subitem.value } theme={ item.type_slug } />
+                                    <ContentPage.Description value={ subitem.description } />
+                                    <ViewBlock.Footer>
+                                        { subitem.origin.map( crr => <div key={ item.source + crr.page }>{ crr.source } p.{ crr.page }</div>) }
+                                    </ViewBlock.Footer>
+                                </ViewBlock.SubItem>
+                        })
+                    }
+                </ViewBlock.List>
+			</Main>
+		</>
+	)
 }
+
+
 
 export async function getStaticProps(context) {
     const { type = "", slug = "" } = context.params

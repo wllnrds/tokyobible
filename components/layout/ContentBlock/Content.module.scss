@@ -1,0 +1,145 @@
+.empty{
+    display: flex;
+    padding: 32px;
+    background-color: var(--text-color-grade-1);
+    color: var(--text-color-grade-3);
+    border-radius: 16px;
+    aspect-ratio: 1/1;
+    justify-content: center;
+}
+
+.grid{
+    display: grid;
+    flex-wrap: wrap;
+    grid-template-columns: repeat( auto-fill, minmax( 240px, 1fr) );
+    gap: 32px;
+}
+
+.header{
+    padding: 32px;
+    color: var(--contrast);
+
+    .title{
+        font-size: 36px;
+        font-family: 'Reem Kufi Ink',sans-serif;
+    }
+
+    .cover{
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 0;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center center;
+        top: 0px;
+        left: 0px;
+        filter: blur(2px) brightness(96%) saturate(124%);
+        -webkit-filter: blur(2px) brightness(96%) saturate(124%);
+        -moz-filter: blur(2px) brightness(96%) saturate(124%);
+        transition: 300ms all linear;
+    }
+}
+
+.block{
+    border-radius: 24px;
+    aspect-ratio: 1/1;
+    display: flex;
+    background-color: var(--text-color-grade-1);
+    padding: 16px;
+    align-items: flex-end;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+
+    .cover{
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 0;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        top: 0px;
+        left: 0px;
+        filter: blur(2px) brightness(96%) saturate(124%);
+        -webkit-filter: blur(2px) brightness(96%) saturate(124%);
+        -moz-filter: blur(2px) brightness(96%) saturate(124%);
+        transition: 300ms all linear;
+    }
+
+    .title{
+        background-color: var(--text-color-grade-3);
+        color: var(--contrast);
+        border-radius: 16px;
+        padding: 4px 12px;
+        z-index: 10;
+        text-align: center;
+    }
+
+    &:hover{
+        .cover{
+            filter: blur(0px) brightness(100%) saturate(100%);
+            -webkit-filter: blur(0px) brightness(100%) saturate(100%);
+            -moz-filter: blur(0px) brightness(100%) saturate(100%);
+        }
+    }
+}
+
+.footer{
+    color: var(--text-color-grade-2);
+    font-size: 14px;
+    line-height: 1;
+    letter-spacing: 0.35px;
+}
+
+.subitemList{
+    display: flex;
+    flex-direction: column;
+    margin-top: 32px;
+    gap: 32px;
+
+    .subitem{
+        border-left: 2px solid transparent;
+        padding-left: 16px;
+
+        .title{
+            margin: 0px;
+            padding: 0px;
+            line-height: 1;
+            font-size: 24px;
+            font-family: 'Reem Kufi Ink',sans-serif;
+            margin-bottom: 8px;
+        }
+
+        &.active{
+            &.default{ border-color: var(--text-color-grade-1); }
+            &.vantagem{ border-color: var(--color-vantagem); }        
+            &.desvantagem{ border-color: var(--color-desvantagem); }
+        }
+    }
+}
+
+.value{
+    display: block;
+    margin:0px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 8px;
+
+    &.default{
+        color: var(--text-color-grade-1);
+    }
+
+    &.vantagem{
+        color: var(--color-vantagem);
+    }
+
+    &.desvantagem{
+        color: var(--color-desvantagem);
+    }
+}

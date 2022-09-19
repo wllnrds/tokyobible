@@ -1,0 +1,28 @@
+.tags{
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    -webkit-touch-callout: none;
+      -webkit-user-select: none;
+       -khtml-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none;
+}
+
+.item{
+    display: flex;
+    padding: 4px 12px;
+    border-radius: 24px;
+    background-color: var(--text-color-grade-1);
+    font-size: 12px;
+
+    &:hover{
+        background-color: var(--color-main-shadow);
+    }
+
+    &.active{
+        background-color: var(--color-main);
+        color: var(--contrast);
+    }
+}

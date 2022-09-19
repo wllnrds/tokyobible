@@ -1,0 +1,20 @@
+.title{
+    font-family: 'Reem Kufi Ink', sans-serif;
+    font-size: 18px;
+    margin: 0px;
+    padding: 0px;
+    font-weight: normal;
+    margin-bottom: 16px;
+
+    &.default{
+        color: var(--text-color);
+    }
+
+    &.vantagem{
+        color: var(--color-vantagem);
+    }
+
+    &.desvantagem{
+        color: var(--color-desvantagem);
+    }
+}
