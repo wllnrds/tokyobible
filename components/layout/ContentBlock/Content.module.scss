@@ -64,9 +64,9 @@
         background-position: center center;
         top: 0px;
         left: 0px;
-        filter: blur(2px) brightness(96%) saturate(124%);
-        -webkit-filter: blur(2px) brightness(96%) saturate(124%);
-        -moz-filter: blur(2px) brightness(96%) saturate(124%);
+        filter: brightness(96%) saturate(124%);
+        -webkit-filter: rightness(96%) saturate(124%);
+        -moz-filter: brightness(96%) saturate(124%);
         transition: 300ms all linear;
     }
 
@@ -81,9 +81,9 @@
 
     &:hover{
         .cover{
-            filter: blur(0px) brightness(100%) saturate(100%);
-            -webkit-filter: blur(0px) brightness(100%) saturate(100%);
-            -moz-filter: blur(0px) brightness(100%) saturate(100%);
+            filter: brightness(100%) saturate(100%);
+            -webkit-filter: brightness(100%) saturate(100%);
+            -moz-filter: brightness(100%) saturate(100%);
         }
     }
 }
