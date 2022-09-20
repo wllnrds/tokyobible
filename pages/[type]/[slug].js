@@ -5,7 +5,7 @@ import Layout, { Page as ContentPage, Main, Breadcumbs, ViewBlock } from '../../
 
 const query_path = groq`*[_type == "rule" && defined(slug.current)]{ "slug": slug.current, "type": type->slug.current }`
 const query_default = groq`*[_type == "rule" && slug.current == $slug && type.ref in *[_type == "contentType" && slug.current == $type].id ][0]{ ... , "type": type -> name, "type_slug": type->slug.current,"origin": origin[]{page,"source": source->name } }`;
-const query_group = groq`*[_type == "ruleGroup" && _id == $group]{...,"type_slug": type->slug.current,"rules":*[_type=='rule' && references(^._id)]}[0]{ ... , "type" : type -> name, "rules": rules[]{...,"type": type->name,"type_slug": type->slug.current,"origin": origin[]{page,"source": source->name}} }`;
+const query_group = groq`*[_type == "ruleGroup" && _id == $group]{...,"type_slug": type->slug.current, "rules": *[_type=='rule' && references(^._id)] | order(name) }[0]{ ... , "type" : type -> name, "rules": rules[]{...,"type": type->name,"type_slug": type->slug.current,"origin": origin[]{page,"source": source->name}} }`;
 
 export default function Page({ item, refer}) {
 	return (
