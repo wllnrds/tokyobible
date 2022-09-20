@@ -35,14 +35,14 @@ class MyDocument extends Document {
 					<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 					<meta name="msapplication-starturl" content="/" />
 					
-					<link rel="icon" href="/static/icons/icon-192x192.png" />
-					<link rel="apple-touch-icon" href="/static/icons/icon-192x192.png" />
-					<link rel="icon" sizes="256x256" href="/static/icons/icon-256x256.png" />
-					<link rel="apple-touch-icon" sizes="256x256" href="/static/icons/icon-256x256.png" />
-					<link rel="icon" sizes="384x384" href="/static/icons/icon-384x384.png" />
-					<link rel="apple-touch-icon" sizes="384x384" href="/static/icons/icon-384x384.png" />
-					<link rel="icon" sizes="512x512" href="/static/icons/icon-512x512.png" />
-					<link rel="apple-touch-icon" sizes="512x512" href="/static/icons/icon-512x512.png" />
+					<link rel="icon" href="/static/images/icons/icon-192x192.png" />
+					<link rel="apple-touch-icon" href="/static/images/icons/icon-192x192.png" />
+					<link rel="icon" sizes="256x256" href="/static/images/icons/icon-256x256.png" />
+					<link rel="apple-touch-icon" sizes="256x256" href="/static/images/icons/icon-256x256.png" />
+					<link rel="icon" sizes="384x384" href="/static/images/icons/icon-384x384.png" />
+					<link rel="apple-touch-icon" sizes="384x384" href="/static/images/icons/icon-384x384.png" />
+					<link rel="icon" sizes="512x512" href="/static/images/icons/icon-512x512.png" />
+					<link rel="apple-touch-icon" sizes="512x512" href="/static/images/icons/icon-512x512.png" />
 
 					<link rel="preconnect" href="https://fonts.googleapis.com" />
 					<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
