@@ -1,5 +1,6 @@
 import '../styles/globals.scss'
 import Head from 'next/head'
+import { GoogleAnalytics } from "nextjs-google-analytics";
 
 function MyApp({ Component, pageProps }) {
   const getLayout = Component.getLayout || ((page) => page)
@@ -10,6 +11,7 @@ function MyApp({ Component, pageProps }) {
       <link rel="icon" href="/favicon.ico" />
       <meta name='viewport' content='minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover'/>
     </Head>
+    <GoogleAnalytics trackPageViews />
     { getLayout(<Component {...pageProps} />) }
   </>
 }
