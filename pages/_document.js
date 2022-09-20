@@ -10,6 +10,20 @@ class MyDocument extends Document {
 		return (
 			<Html lang="pt-BR">
 				<Head>
+				<script async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`} />
+				<script
+					dangerouslySetInnerHTML={{
+					__html: `
+					window.dataLayer = window.dataLayer || [];
+					function gtag(){dataLayer.push(arguments);}
+					gtag('js', new Date());
+					gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', {
+					page_path: window.location.pathname,
+					});
+				`,
+					}}
+				/>
+
 					<meta name="mobile-web-app-capable" content="yes" />
 					<meta name="apple-mobile-web-app-capable" content="yes" />
 					<meta name="application-name" content="Fluorite" />
