@@ -20,6 +20,7 @@ class MyDocument extends Document {
 					<meta name="msapplication-navbutton-color" content="#FFFFFF" />
 					<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 					<meta name="msapplication-starturl" content="/" />
+					
 					<link rel="icon" href="/assets/icons/icon-192x192.png" />
 					<link rel="apple-touch-icon" href="/assets/icons/icon-192x192.png" />
 					<link rel="icon" sizes="256x256" href="/assets/icons/icon-256x256.png" />
