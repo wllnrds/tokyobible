@@ -12,7 +12,7 @@ function MyApp({ Component, pageProps }) {
       <meta name='viewport' content='minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover' />
     </Head>
     <Script src="https://www.googletagmanager.com/gtag/js?id=G-QXSKKLN5JW" strategy="afterInteractive"></Script>
-      <Script strategy="afterInteractive">
+    <Script id="google-analytics" strategy="afterInteractive">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){window.dataLayer.push(arguments);}
@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps }) {
 
           gtag('config', 'G-QXSKKLN5JW');
         `}
-      </Script>
+    </Script>
     {getLayout(<Component {...pageProps} />)}
   </>
 }
