@@ -16,13 +16,13 @@
                   "name": "Buscar",
                   "url": "/search",
                   "description": "Buscar informações na base",
-                  "icons": [{ "src": "./static/support/buscar.png", "sizes": "48x48" }]
+                  "icons": [{ "src": "/static/support/buscar.png", "sizes": "48x48" }]
             },
             {
                   "name": "Conteúdo",
                   "url": "/content",
                   "description": "Acessa todos os livros e revistas",
-                  "icons": [{ "src": "./static/support/conteudo.png", "sizes": "48x48" }]
+                  "icons": [{ "src": "/static/support/conteudo.png", "sizes": "48x48" }]
             }
       ],
       "screenshots": [
