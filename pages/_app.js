@@ -1,17 +1,21 @@
 import '../styles/globals.scss'
+import Script from 'next/script'
 import Head from 'next/head'
 
 function MyApp({ Component, pageProps }) {
   const getLayout = Component.getLayout || ((page) => page)
   return <>
     <Head>
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-QXSKKLN5JW"></script>
-      <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){ dataLayer.push(arguments) }
-        gtag('js', new Date());
-        gtag('config', 'G-QXSKKLN5JW');
-      </script>
+      <Script src="https://www.googletagmanager.com/gtag/js?id=G-QXSKKLN5JW" strategy="afterInteractive"></Script>
+      <Script strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-QXSKKLN5JW');
+        `}
+      </Script>
       <title>Biblioteca de Tóquia</title>
       <meta name="description" content="3D&T Companion" />
       <link rel="icon" href="/favicon.ico" />
