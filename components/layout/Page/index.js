@@ -3,8 +3,10 @@ import Description from './Description';
 import Column from './List';
 import Block from './Block';
 
-export function Content({ children }){
+function Content({ children }){
     return <>{children}</>
 }
 
-export default { Content, Header, Description, Column, Block }
+const Modules = { Content, Header, Description, Column, Block }
+
+export default Modules

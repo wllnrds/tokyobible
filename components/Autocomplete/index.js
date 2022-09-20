@@ -2,14 +2,14 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import styles from './Autocomplete.module.scss'
 
-export default function Autocomplete({ onChange = false , startValue = '', data = [], onSubmit = false }){
+function Autocomplete({ onChange = false , startValue = '', data = [], onSubmit = false }){
     const [ options, setOptions ] = useState( [] )
 
     const [ query, setQuery ] = useState( '' )
 
     useEffect(()=>{
         setQuery(startValue)
-    },[])
+    },[startValue])
 
     function handleChange(event){
         setQuery(event.target.value)
@@ -45,3 +45,5 @@ export default function Autocomplete({ onChange = false , startValue = '', data 
         }
     </form>
 }
+
+export default Autocomplete

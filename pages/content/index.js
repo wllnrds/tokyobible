@@ -18,7 +18,7 @@ export default function Page({ data }) {
 		}else{
 			setList( data )
 		}
-	}, [filter])
+	}, [ filter, data ])
 
 	return (
 		<Main>
