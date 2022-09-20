@@ -12,8 +12,8 @@ class MyDocument extends Document {
 				<Head>
 					<meta name="mobile-web-app-capable" content="yes" />
 					<meta name="apple-mobile-web-app-capable" content="yes" />
-					<meta name="application-name" content="Fluorite" />
-					<meta name="apple-mobile-web-app-title" content="Fluorite" />
+					<meta name="application-name" content="Biblioteca de Tóquio" />
+					<meta name="apple-mobile-web-app-title" content="Biblioteca de Tóquio" />
 
 					<link rel="manifest" href="/manifest.json" />
 					<meta name="theme-color" content="#FFFFFF" />

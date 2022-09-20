@@ -1,4 +1,5 @@
 {
+      "id": "tokyo-bible-app",
       "name": "Biblioteca de Tóquio",
       "description": "Um companion para 3DeT",
       "short_name": "Biblioteca de Tóquio",
@@ -6,18 +7,42 @@
       "background_color": "#FFFFFF",
       "display": "standalone",
       "orientation": "any",
+      "categories": "games,utilities,entertainment",
+      "lang": "pt",
       "scope": "/",
       "start_url": "/",
       "shortcuts": [
             {
                   "name": "Buscar",
                   "url": "/search",
-                  "description": "Buscar informações na base"
+                  "description": "Buscar informações na base",
+                  "icons": [{ "src": "./static/support/buscar.png", "sizes": "48x48" }]
             },
             {
-                  "name": "Conteúdos",
+                  "name": "Conteúdo",
                   "url": "/content",
-                  "description": "Acessa todos os livros e revistas"
+                  "description": "Acessa todos os livros e revistas",
+                  "icons": [{ "src": "./static/support/conteudo.png", "sizes": "48x48" }]
+            }
+      ],
+      "screenshots": [
+            {
+                  "src":"./static/support/screen-home.png",
+                  "sizes":"806x883",
+                  "type":"image/png",
+                  "description":"Home da Biblioteca de Tóquio."
+            },
+            {
+                  "src":"./static/support/screen-conteudos.png",
+                  "sizes":"806x883",
+                  "type":"image/png",
+                  "description":"Lista de conteúdo na Biblioteca de Tóquio."
+            },
+            {
+                  "src":"./static/support/screen-conteudo.png",
+                  "sizes":"806x883",
+                  "type":"image/png",
+                  "description":"Conteúdo da Biblioteca de Tóquio."
             }
       ],
       "icons": [
