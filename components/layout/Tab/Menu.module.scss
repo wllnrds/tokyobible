@@ -63,3 +63,47 @@
         }
     }
 }
+
+.iconLink{
+    background-color: var(--contrast);
+    display: flex;
+    align-items: center;
+    border-radius: 32px;
+    font-size: 14px;
+
+    .icon{
+        width: 32px;
+        height: 32px;
+        display: flex;
+        overflow: hidden;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        color: var(--text-color-grade-2);
+        font-variation-settings:
+            'FILL' 1,
+            'wght' 100,
+            'GRAD' 200,
+            'opsz' 16;
+        font-size: 16px;
+    }
+
+    &:hover, &:focus, &:active{
+        cursor: pointer;
+        background-color: var(--color-main-shadow);
+        .icon{
+            color: var(--color-main);
+        }
+    }
+
+    &.active{
+        .icon{
+            color: var(--color-main);
+        }
+
+        &:hover, &:focus, &:active{
+            cursor: none;
+            background-color: transparent;
+        }
+    }
+}
