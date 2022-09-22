@@ -115,7 +115,8 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	font-size: 12px;
+	font-size: 8px;
+    
 }
 
 .footer a {
@@ -123,4 +124,5 @@
 	justify-content: center;
 	align-items: center;
 	flex-grow: 1;
+    word-wrap: break-word;
 }
