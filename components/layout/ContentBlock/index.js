@@ -14,7 +14,7 @@ function ContentBlock({ title = "Título ausente" , cover = "/static/images/plac
         <a className={ styles.block }>
             <div className={ styles.title }>{ title }</div>
             <div className={ styles.cover }>
-                <Image src={ cover } width={ 1000 } height={ 654 } layout="responsive" />
+                <Image src={ cover } alt="Capa" width={ 1000 } height={ 654 } layout="responsive" />
             </div>
         </a>
     </Link>

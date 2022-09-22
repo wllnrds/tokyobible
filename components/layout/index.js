@@ -17,11 +17,6 @@ export default function Layout({ children }) {
                 <div className={ styles.content }>
                     {children}
                 </div>
-                <footer className={styles.footer}>
-                    <a href="https://instagram.com/wlln.rds" target="_blank" rel="noopener noreferrer">
-                        Powered by @<strong>wlln.rds</strong>
-                    </a>
-                </footer>
             </section>
         </div>
     )

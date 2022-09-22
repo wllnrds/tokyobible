@@ -38,6 +38,14 @@
     font-size: 14px;
     line-height: 1.5 !important;
     letter-spacing: 0.35px;
+
+    a{
+        color: var(--color-main);
+
+        &:hover{
+            text-decoration: underline;
+        }
+    }
 }
 
 .list{

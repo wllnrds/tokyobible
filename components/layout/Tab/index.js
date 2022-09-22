@@ -8,5 +8,10 @@ export default function Tab(){
             <Item text="Busca" icon="search" href="/search" />
             <Item text="Conteúdo" icon="auto_stories" href="/content" />
         </menu>
+        <footer className={styles.footer}>
+            <a href="https://instagram.com/wlln.rds" target="_blank" rel="noopener noreferrer">
+                Powered by @<strong>wlln.rds</strong>
+            </a>
+        </footer>
     </aside>
 }

@@ -80,7 +80,7 @@ export default function Page({ data }) {
 	)
 }
 
-const query_default = groq`*[ _type == "source" ]{ _id, name, "type" : type->slug.current, "cover": image.asset->url, "slug": slug.current }`
+const query_default = groq`*[ _type == "source" ]{ _id, name, "type" : type->slug.current, "cover": image.asset->url, "slug": slug.current } | order( name )`
 
 export async function getStaticProps(context) {
     let data = await client.fetch(query_default)
