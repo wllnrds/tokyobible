@@ -112,10 +112,11 @@
 
 .footer {
 	height: fit-content;
-	display: flex;
+	// display: flex;
 	justify-content: center;
 	align-items: center;
 	font-size: 8px;
+    display: none;
     
 }
 
