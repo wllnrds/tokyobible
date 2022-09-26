@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
-import Layout, { Page as ContentPage, Main, Caption, Resume } from '../components/layout';
+import Layout, { Page as ContentPage, Main, Caption, Resume, Breadcumbs, ViewBlock } from '../components/layout';
 import Autocomplete from '../components/Autocomplete';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 
 export default function Page() {
 	const router = useRouter();
@@ -41,9 +42,13 @@ export default function Page() {
 	return (
 		<>
 			<Main>
-				<Caption>Busca</Caption>
+				<Head>
+					<title>{ query ? `Buscando por ${ query }` : "Busca" } • Biblioteca de Tóquio</title>
+				</Head>
+				<ViewBlock.Header title={ "Busca" }/>
+				<Breadcumbs data={ [ { text: "Início", href: "/" }, { text: "Busca", active: true } ] } />
 				<Autocomplete data={ options } startValue={ query } onChange={ value => setQuery(value) } onSubmit={ submit } />
-				<Caption>Resultados ({ results.length })</Caption>
+				{ query && <Caption>Resultados para <em>&quot;{ query }&quot;</em> ({ results.length })</Caption> }
 				<Resume.Holder>
 					{ results.map( item => <Resume.Item key={ item._id } data={ item } />) }
 					{ ( results.length === 0 ) && <Resume.Empty /> }

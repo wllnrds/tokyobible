@@ -7,6 +7,7 @@ export default function Tab(){
             <Item text="Início" icon="home" href="/" />
             <Item text="Busca" icon="search" href="/search" />
             <Item text="Conteúdo" icon="auto_stories" href="/content" />
+            <Item text="Sobre" icon="contact_support" href="/about" />
         </menu>
         <footer className={styles.footer}>
             <a href="https://instagram.com/wlln.rds" target="_blank" rel="noopener noreferrer">

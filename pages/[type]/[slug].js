@@ -1,4 +1,5 @@
 import groq from 'groq'
+import Head from 'next/head';
 
 import client from '../../client'
 import Layout, { Page as ContentPage, Main, Breadcumbs, ViewBlock } from '../../components/layout'
@@ -10,9 +11,12 @@ const query_group = groq`*[_type == "ruleGroup" && _id == $group]{...,descriptio
 export default function Page({ item, refer}) {
 	return (
 		item && <>
+            <Head>
+                <title>{ item.type } - { item.name } • Biblioteca de Tóquio</title>
+            </Head>
 			<Main>
-			    <ViewBlock.Header title={ item.name } type={ item.type } theme={ item.type_slug }/>
 				<Breadcumbs data={ [ { text: "Início", href: "/" } , { text: item.name, active: true } ] } />
+			    <ViewBlock.Header title={ item.name } type={ item.type } theme={ item.type_slug }/>
                 <ViewBlock.Value value={ item.value } theme={ item.type_slug } />
 				<ContentPage.Description value={ item.description } />
                 <ViewBlock.Footer>

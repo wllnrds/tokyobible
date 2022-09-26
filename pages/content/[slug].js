@@ -1,4 +1,5 @@
 import groq from 'groq'
+import Head from 'next/head'
 import Link from 'next/link'
 
 import client from '../../client'
@@ -23,6 +24,9 @@ export default function Page({ data }) {
 
 	return (
 		data && <>
+            <Head>
+                <title>{ data.type.name } - { data.name } • Biblioteca de Tóquio</title>
+            </Head>
 			<ContentPage.Header cover={ data.cover } title={ data.name } type={ data.type.name } />
 			<Main>
 				<Breadcumbs data={

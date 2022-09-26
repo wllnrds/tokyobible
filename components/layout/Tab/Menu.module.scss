@@ -5,7 +5,7 @@
     display: flex;
     flex-direction: column;
     
-    @media (max-width: 480px) {
+    @media (max-width: 580px) {
         width: fit-content
     }
 }
@@ -45,7 +45,7 @@
     }
 
     .text{
-        @media (max-width: 480px) {
+        @media (max-width: 580px) {
             display: none;
         }
     }
@@ -112,12 +112,13 @@
 
 .footer {
 	height: fit-content;
-	// display: flex;
 	justify-content: center;
 	align-items: center;
 	font-size: 8px;
-    display: none;
-    
+
+    @media (max-width: 580px) {
+        display: none;
+    }
 }
 
 .footer a {
