@@ -59,14 +59,17 @@ export async function getStaticProps(context) {
         }
     }
 
-    return { props: { ...data } }
+    return { 
+        props: { ...data },
+        revalidate: 10
+    }
 }
 
 export async function getStaticPaths() {
     const paths = await client.fetch( query_path )
     return {
         paths: paths.map((item) => ({ params: { ...item } })),
-        fallback: true,
+        fallback: true
     }
 }
 

@@ -69,16 +69,21 @@ const query_default = groq`*[ _type == "contentType" && slug.current == $slug ][
 }`
 
 export async function getStaticProps(context) {
-	console.log(context.params)
     const { slug = "" } = context.params
     let data = await client.fetch(query_default, { slug })
-    return { props: { data } }
+    return { 
+		props: { data },
+		revalidate: 10
+	}
 }
 
 const query_path = groq`*[ _type == "contentType" && indexed == true ]{ "slug": slug.current }`
 export async function getStaticPaths() {
     const paths = await client.fetch( query_path )
-    return { paths: paths.map( (item) => ( { params: item } ) ), fallback: true, }
+    return {
+		paths: paths.map( (item) => ( { params: item } ) ),
+		fallback: true
+	}
 }
 
 Page.getLayout = function getLayout(page) {

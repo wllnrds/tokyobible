@@ -78,7 +78,10 @@ const query_default = groq`*[ _type == "source" && slug.current == $slug ][0]{
 export async function getStaticProps(context) {
     const { slug = "" } = context.params
     let data = await client.fetch(query_default, { slug })
-    return { props: { data } }
+    return {
+		props: { data },
+		revalidate: 10
+	}
 }
 
 const query_path = groq`*[ _type == "source" ]{ "slug": slug.current }`
@@ -86,7 +89,7 @@ export async function getStaticPaths() {
     const paths = await client.fetch( query_path )
     return {
         paths: paths.map( (item) => ( { params: item } ) ),
-        fallback: true,
+        fallback: true
     }
 }
 

@@ -97,7 +97,10 @@ const query_types = groq`*[ _type == "contentType" && indexed == true ]{ _id, _t
 export async function getStaticProps(context) {
     let data_sources = await client.fetch(query_default)
     let data_types = await client.fetch(query_types)
-    return { props: { data : [ ...data_sources, ...data_types ] } }
+    return { 
+		props: { data : [ ...data_sources, ...data_types ] },
+		revalidate: 10
+	}
 }
 
 Page.getLayout = function getLayout(page) {
