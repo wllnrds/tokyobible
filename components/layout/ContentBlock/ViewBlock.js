@@ -49,6 +49,14 @@ function List({ children }){
     return <section className={ styles.subitemList }>{ children }</section>
 }
 
-const Modules = { Holder: ContentHolder, Item : ContentBlock, Empty, Header, Value, Footer, SubItem, List }
+function FlexBox({ children }){
+    return <div className={ styles.flexmode }>{ children }</div>
+}
+
+function FlexBoxItem({ children }){
+    return <div className={ styles.flexitem }>{ children }</div>
+}
+
+const Modules = { Holder: ContentHolder, Item : ContentBlock, Empty, Header, Value, Footer, SubItem, List, Flex : { FlexBox, FlexBoxItem } }
 
 export default Modules

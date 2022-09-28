@@ -1,5 +1,6 @@
 import groq from 'groq'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
 import client from '../../client'
@@ -7,10 +8,10 @@ import Layout, { Caption, Tags, ContentBlock, Main, Breadcumbs, ViewBlock } from
 import { IconButton } from '../../components/layout/Tab/MenuItem'
 
 export default function Page({ data }) {
-	const [list,setList] = useState( [] )
-	const [filter,setFilter] = useState( false )
-
-	const [view, setView] = useState(false)
+	const router = useRouter()
+	const [list, setList] = useState( [] )
+	const [filter, setFilter] = useState( 'tudo' )
+	const [view, setView] = useState( false )
 
 	const fromStorage = ( key = "", value = false ) => {
 		if(typeof window !== 'undefined' && localStorage ){
@@ -29,18 +30,34 @@ export default function Page({ data }) {
 		}else{
 			setView('default')
 		}
+
+		const hash = router.asPath.split('#')[1]
+		if(hash){
+			setFilter(hash)
+		}
 	},[])
 
-	useEffect(()=>{ fromStorage('viewMode', view); },[view])
-	useEffect(()=>{ setList([...data]) }, [data])
+	useEffect(()=>{
+		console.log(router.asPath)
+	},[ router ])
 
 	useEffect(()=>{
-		if(filter){
+		fromStorage('viewMode', view);
+	},[ view ])
+
+	useEffect(()=>{
+		if(filter != 'tudo'){
 			setList( data.filter( i => i.type === filter ) )
 		}else{
+			router.push({ hash : 'tudo' })
 			setList( data )
 		}
 	}, [ filter, data ])
+
+	function filtering(tag){
+		router.push({ hash : tag })
+		setFilter(tag)
+	}
 
 	return (
 		<Main>
@@ -55,13 +72,19 @@ export default function Page({ data }) {
 			</div>
 			<Breadcumbs data={ [ { text: "Início", href: "/" }, { text: "Conteúdo", active: true } ] } />
 			<Tags.Holder>
-				Ver por <Tags.Item active={ filter === 'tipos' } onclick={ ()=>{ setFilter('tipos') } }>Tipos</Tags.Item>
+				Ver por <Tags.Item active={ filter === 'tipos' } onclick={ ()=>{ filtering('tipos') } }>Tipos</Tags.Item>
 			</Tags.Holder>
 			<Tags.Holder>
-				Filtrar fonte de conteúdo
-				<Tags.Item active={ !filter } onclick={ ()=>{ setFilter(false) } }>Todos</Tags.Item>
-				<Tags.Item active={ filter === 'livro' } onclick={ ()=>{ setFilter('livro') } }>Livro</Tags.Item>
-				<Tags.Item active={ filter === 'revista' } onclick={ ()=>{ setFilter('revista') } }>Revista</Tags.Item>
+				<ViewBlock.Flex.FlexBox>
+					<ViewBlock.Flex.FlexBoxItem>
+						Filtrar fonte de conteúdo
+					</ViewBlock.Flex.FlexBoxItem>
+					<ViewBlock.Flex.FlexBoxItem>
+						<Tags.Item active={ filter === 'tudo' || false } onclick={ ()=>{ filtering('tudo') } }>Todos</Tags.Item>
+						<Tags.Item active={ filter === 'livro' || false } onclick={ ()=>{ filtering('livro') } }>Livro</Tags.Item>
+						<Tags.Item active={ filter === 'revista' || false } onclick={ ()=>{ filtering('revista') } }>Revista</Tags.Item>
+					</ViewBlock.Flex.FlexBoxItem>
+				</ViewBlock.Flex.FlexBox>
 			</Tags.Holder>
 			<ContentBlock.Holder theme={ view || 'default' }>
 			{ 

@@ -284,3 +284,15 @@
     border: 1px solid var(--color-main-shadow);
     border-radius: 20px;
 }
+
+.flexmode{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 4px;
+
+    .flexitem{
+        display: flex;
+        gap: 4px;
+    }
+}

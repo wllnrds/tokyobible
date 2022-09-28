@@ -7,15 +7,20 @@ function Separator(){
 }
 
 export default function Caption({ data = [] }){
-    return <div className={ styles.breadcumbs }>
-        { 
-            data.map( (item, index) => {
-                return <>
-                    { item.href && <Link href={ item.href }><a className={ `${ styles.item } ${ item.active && styles.active }` }>{ item.text }</a></Link> }
-                    { !item.href && <span className={ `${ styles.item } ${ item.active && styles.active }` }>{ item.text }</span> }
-                    { ( index < data.length-1 ) && <Separator /> }
-                </>
-            })
+    const itens = data.map( (item, index) => {
+        if( item.href ){
+            return <Link href={ item.href } key={ item.href }><a className={ `${ styles.item } ${ item.active && styles.active }` }>{ item.text }</a></Link>
+        }else{
+            return <span key={ item.text } className={ `${ styles.item } ${ item.active && styles.active }` }>{ item.text }</span>
         }
-    </div>
+    })
+
+    const separators = []
+
+    itens.forEach( (item, index) => {
+        separators.push(item)
+        index < data.length-1 && separators.push(<Separator key={ Date.now() } />)
+    })
+
+    return <div className={ styles.breadcumbs }>{ separators }</div>
 }
