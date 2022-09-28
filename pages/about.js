@@ -21,6 +21,7 @@ export default function Page() {
 						<li><strong>Campanha</strong>: Permitir que mestres criem campanhas, dando acesso a jogadores para incluirem seus personagens nela. Além disso quero permitir  registro de notas da campanha, tanto para o mestre como para os jogadores.</li>
 						<li><strong>Rolagem de dados</strong>: E claro, se ja tem tanta coisa, porque não permitir a rolagem de dados também?</li>
 					</ul>
+					<p>Agora foi criado um <a target="_blank" href="https://discord.gg/vq5zphGpM4">Canal do Discord</a> pra falar sobre updates e falar sobre o App.</p>
 					<p>Se você gostou do projeto e quer dar alguma sugestão (ou até ajudar 😃) pode mandar DM no  <a rel="noreferrer" target="_blank" href="https://instagram.com/wlln.rds">instagram</a> ou me chama no <a rel="noreferrer" target="_blank" href="https://twitter.com/walmeidaw">Twitter</a>.</p>
 				</div>
 			</ContentPage.Description>
