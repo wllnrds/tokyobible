@@ -40,7 +40,10 @@
     font-size: 14px;
     line-height: 1.5 !important;
     letter-spacing: 0.35px;
-
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    
     a{
         color: var(--color-main);
 

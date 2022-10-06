@@ -10,6 +10,11 @@
   --color-main-shadow: rgba(104, 114, 255, 0.35);
   --color-main-light: rgba(104, 114, 255, 0.06);
 
+  
+  --color-second: rgb(255, 104, 154);
+  --color-second-shadow: rgba(255, 104, 154, 0.35);
+  --color-second-light: rgba(255, 104, 154, 0.06);
+
   --color-vantagem: rgb(42, 214, 191);
   --color-desvantagem: rgb(255, 136, 0);
 
@@ -50,7 +55,7 @@ p{
   font-size: 14px;
   line-height: 1.5;
   letter-spacing: 0.35px;
-  margin: 0px 0px 16px 0px;
+  margin: 0px;
 }
 
 * {

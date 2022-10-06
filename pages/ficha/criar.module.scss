@@ -1,0 +1,41 @@
+.pointHolder{
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 16px;
+    text-align: center;
+
+    .header{
+        flex: 1;
+    }
+
+    .list{
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        margin-top: 8px;
+
+        .item{
+            width: 48px;
+            height: 48px;
+            display: block;
+            border: 1px solid var(--color-second);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            align-content: center;
+            transition: 100ms all linear;
+
+            &:hover{
+                background-color: var(--color-second-shadow);
+                cursor: pointer;
+            }
+
+            &.active{
+                background-color: var(--color-second);
+                color: var(--contrast);
+            }
+        }
+    }
+}

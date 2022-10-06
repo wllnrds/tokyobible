@@ -1,0 +1,91 @@
+.box{
+    display: flex;
+    font-size: 14px;
+    flex-direction: column;
+
+    .wrap{
+        flex: 1;
+        display: flex;
+        position: relative;
+        margin-top: 16px;
+
+        .label{
+            display: flex;
+            flex: 1;
+            font-size: 12px;
+            padding: 0;
+            line-height: 1;
+            color: var(--text-color-grade-2);
+            transition: all 100ms linear;
+            color: var(--text-color-grade-3);
+            font-size: 14px;
+        }
+    }
+}
+
+.list{
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--text-color-grade-1);
+    padding: 16px;
+    font-size: 14px;
+    border-radius: 16px;
+
+    &:not(.active):hover{
+        outline: 1px solid var(--color-second);
+        cursor: pointer;
+    }
+
+    .header{
+        display: flex;
+        flex-direction: row;
+        .title{
+            flex: 1;
+            font-weight: bold;
+        }
+        .info{
+            color: var(--text-color-grade-2);
+        }
+        
+
+        & + .text{            
+            margin-top: 10px;
+        }
+    }
+
+    .text{
+        color: var(--text-color);
+
+        p{
+            margin: 0px;
+            font-size: 12px;
+            color: var(--text-color-grade-3);
+
+            & + p {
+                margin-top: 8px;
+            }
+        }
+    }
+
+    &.active{
+        background-color: var(--color-second) !important;
+        color: var(--contrast);
+
+        .text{
+            p{
+                color: var(--contrast);
+            }
+        }
+
+        &:hover{
+            cursor: alias;
+        }
+    }
+}
