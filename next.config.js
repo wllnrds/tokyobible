@@ -9,8 +9,11 @@ const nextConfig = {
 		return config;
 	},
 	images: {
-		domains: ['cdn.sanity.io'],
-	},
+		domains: [
+			'cdn.sanity.io',
+			'avatars.dicebear.com'
+		]
+	}
 }
 
 const withPWA = require('next-pwa')({

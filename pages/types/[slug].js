@@ -32,11 +32,9 @@ export default function Page({ data }) {
 			<Head>
 				<title>{ data.name } • Biblioteca de Tóquio</title>
 			</Head>
-			<ContentPage.Header cover={ data.cover } title={ data.name } />
+			<ContentPage.Header cover={ data.cover } title={ data.name } type="Tipos" />
 			<Main>
-				<Breadcumbs data={
-					[ { text: "Início", href: "/" } , { text: "Conteúdo", href: "/content" } , { text: data.name, active: true } ]
-				} />
+				<Breadcumbs data={ [ { text: "Início", href: "/" } , { text: "Tipos", href: "/types" } , { text: data.name, active: true } ] } />
 				<ContentPage.Description value={ data.description } />
 				<ContentPage.Block>
 					<Caption>Itens ({ dataRules.length })</Caption>
@@ -50,7 +48,7 @@ export default function Page({ data }) {
 							dataRules.map(
 								item => 
 								<ContentPage.Column.Item key={ item.path }>
-									<Link href={ `/${ item.path }${ item.group ? `#${item._id}` : '' }`}><a>{ item.name }</a></Link>
+									<Link href={ `/${ item.path }${ item.group ? `#${item._id}` : '' }`}>{ item.name }</Link>
 								</ContentPage.Column.Item>
 							)
 						}

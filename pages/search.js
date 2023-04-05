@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import Layout, { Page as ContentPage, Main, Caption, Resume, Breadcumbs, ViewBlock } from '../components/layout';
+import Layout, { Page as ContentPage, Tags, Main, Caption, Resume, Breadcumbs, ViewBlock } from '../components/layout';
 import Autocomplete from '../components/Autocomplete';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
@@ -48,6 +48,13 @@ export default function Page() {
 				<ViewBlock.Header title={ "Busca" }/>
 				<Breadcumbs data={ [ { text: "Início", href: "/" }, { text: "Busca", active: true } ] } />
 				<Autocomplete data={ options } startValue={ query } onChange={ value => setQuery(value) } onSubmit={ submit } />
+				<ViewBlock.Flex.FlexBox>
+					<ViewBlock.Flex.FlexBoxItem>
+						<Tags.Item onClick={ ()=>{ setQuery('vantagem') }}>Vantagens</Tags.Item>
+						<Tags.Item onClick={ ()=>{ setQuery('desvantagem') }}>Desvantagens</Tags.Item>
+						<Tags.Item onClick={ ()=>{ setQuery('vantagem-unica') }}>Vantagens únicas</Tags.Item>
+					</ViewBlock.Flex.FlexBoxItem>
+				</ViewBlock.Flex.FlexBox>
 				{ query && <Caption>Resultados para <em>&quot;{ query }&quot;</em> ({ results.length })</Caption> }
 				<Resume.Holder>
 					{ results.map( item => <Resume.Item key={ item._id } data={ item } />) }

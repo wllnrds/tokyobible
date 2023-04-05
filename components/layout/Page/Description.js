@@ -21,7 +21,7 @@ const serializers = {
             }
 
             if(href){
-                return <Link href={ href }><a>{ children }</a></Link>
+                return <Link href={ href }>{ children }</Link>
             }else{
                 return children
             }

@@ -38,19 +38,18 @@ export default function Page({ data }) {
 	},[])
 
 	useEffect(()=>{
-		console.log(router.asPath)
-	},[ router ])
-
-	useEffect(()=>{
 		fromStorage('viewMode', view);
 	},[ view ])
 
 	useEffect(()=>{
-		if(filter != 'tudo'){
-			setList( data.filter( i => i.type === filter ) )
+		if( data && data.length > 0 ){
+			if(filter != 'tudo'){
+				setList( data.filter( i => i.type === filter ) )
+			}else{
+				setList( data )
+			}
 		}else{
-			router.push({ hash : 'tudo' })
-			setList( data )
+			setList([])
 		}
 	}, [ filter, data ])
 
@@ -64,52 +63,62 @@ export default function Page({ data }) {
 			<Head>
 				<title>Conteúdo • Biblioteca de Tóquio</title>
 			</Head>
+			
 			<ViewBlock.Header title={ "Conteúdo" }/>
+
 			<div style={{ position: 'absolute', top: '8px', right:'8px', display: 'flex', alignItems: 'flex-start', border: '1px solid var(--color-main-shadow)', borderRadius: '20px' }}>
 				<IconButton icon="view_agenda" active={ view === "list" } onclick={ ()=>{ setView( "list" ) } } /> 
 				<IconButton icon="grid_view"  active={ view === "default" } onclick={ ()=>{ setView( "default" ) } } />
 				<IconButton icon="rectangle"  active={ view === "view" } onclick={ ()=>{ setView( "view" ) } } />
 			</div>
+
 			<Breadcumbs data={ [ { text: "Início", href: "/" }, { text: "Conteúdo", active: true } ] } />
-			<Tags.Holder>
-				Ver por <Tags.Item active={ filter === 'tipos' } onclick={ ()=>{ filtering('tipos') } }>Tipos</Tags.Item>
-			</Tags.Holder>
+			
+			<Tags.Holder></Tags.Holder>
+			
 			<Tags.Holder>
 				<ViewBlock.Flex.FlexBox>
 					<ViewBlock.Flex.FlexBoxItem>
 						Filtrar fonte de conteúdo
 					</ViewBlock.Flex.FlexBoxItem>
 					<ViewBlock.Flex.FlexBoxItem>
-						<Tags.Item active={ filter === 'tudo' || false } onclick={ ()=>{ filtering('tudo') } }>Todos</Tags.Item>
+						<Tags.Item active={ filter === 'tudo' || false } onclick={ ()=>{ filtering('tudo') } }>Todas</Tags.Item>
 						<Tags.Item active={ filter === 'livro' || false } onclick={ ()=>{ filtering('livro') } }>Livro</Tags.Item>
 						<Tags.Item active={ filter === 'revista' || false } onclick={ ()=>{ filtering('revista') } }>Revista</Tags.Item>
 					</ViewBlock.Flex.FlexBoxItem>
+					<>●</>
+					<ViewBlock.Flex.FlexBoxItem>
+						Mostrar por
+					</ViewBlock.Flex.FlexBoxItem>
+					<ViewBlock.Flex.FlexBoxItem>
+						<Tags.Item active={ filter === 'tipos' } onclick={ ()=>{ filtering('tipos') } }>Tipos</Tags.Item>
+					</ViewBlock.Flex.FlexBoxItem>
 				</ViewBlock.Flex.FlexBox>
 			</Tags.Holder>
+
 			<ContentBlock.Holder theme={ view || 'default' }>
-			{ 
-				filter !== 'tipos' && 
-				list.filter( i => i._type === 'source' ).length > 0 && 
-				list.filter( i => i._type === 'source' ).map( 
-					item => { 
-						return <ContentBlock.Item key={ item._id } title={ item.name } cover={ item.cover } href={{ pathname:`/content/[slug]`, query: { slug: item.slug } }} />
-					}
-				)
-			}
-			{ 
-				filter === 'tipos' && 
-				list.filter( i => i._type === 'contentType' ).length > 0 && 
-				list.filter( i => i._type === 'contentType' ).map( 
-					item => { 
-						return <ContentBlock.Item key={ item._id } title={ item.name } cover={ item.cover } href={{ pathname:`/types/[slug]`, query: { slug: item.slug } }} />
-					}
-				)
-			}
-			{  list.length == 0 && <ContentBlock.Empty /> }
+				{ 
+					filter !== 'tipos' && 
+					list.filter( i => i._type === 'source' ).length > 0 && 
+					list.filter( i => i._type === 'source' ).map( 
+						item => { 
+							return <ContentBlock.Item key={ item._id } title={ item.name } cover={ item.cover } href={{ pathname:`/content/[slug]`, query: { slug: item.slug } }} />
+						}
+					)
+				}
+				{ 
+					filter === 'tipos' && 
+					list.filter( i => i._type === 'contentType' ).length > 0 && 
+					list.filter( i => i._type === 'contentType' ).map( 
+						item => { 
+							return <ContentBlock.Item key={ item._id } title={ item.name } cover={ item.cover } href={{ pathname:`/types/[slug]`, query: { slug: item.slug } }} />
+						}
+					)
+				}
+				{  list.length == 0 && <ContentBlock.Empty /> }
 			</ContentBlock.Holder>
 			
-			<ContentBlock.Holder theme={ view || 'default' }>
-			</ContentBlock.Holder>
+			<ContentBlock.Holder theme={ view || 'default' }></ContentBlock.Holder>
 		</Main>
 	)
 }

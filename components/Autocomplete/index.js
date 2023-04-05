@@ -37,7 +37,7 @@ function Autocomplete({ onChange = false , startValue = '', data = [], onSubmit 
                     options.map( item => 
                     <li className={ styles.item } key={ item._id }>
                         <Link href={ { pathname:`/[type]/[slug]`, query: { type: item.type_slug, slug: item.slug }, hash : item.group && `#${item._id}` } }>
-                            <a>{ item.name }</a>
+                            { item.name }
                         </Link>
                     </li>
                 )}

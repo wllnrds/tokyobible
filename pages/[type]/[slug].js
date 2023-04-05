@@ -8,11 +8,11 @@ const query_path = groq`*[_type == "rule" && defined(slug.current)]{ "slug": slu
 const query_default = groq`*[_type == "rule" && slug.current == $slug && type.ref in *[_type == "contentType" && slug.current == $type].id ][0]{ ... , description[]{ ..., markDefs[]{ ..., _type == "internalLink" => { "ref_type": @.reference->_type , "slug": @.reference->slug.current, "type_slug": @.reference->type->slug.current } } },"type": type -> name, "type_slug": type->slug.current,"origin": origin[]{page,"source": source->name } }`;
 const query_group = groq`*[_type == "ruleGroup" && _id == $group]{...,description[]{ ..., markDefs[]{ ..., _type == "internalLink" => { "ref_type": @.reference->_type , "slug": @.reference->slug.current, "type_slug": @.reference->type->slug.current } } },"type_slug": type->slug.current, "rules": *[_type=='rule' && references(^._id)] | order(name) }[0]{ ... , description[]{ ..., markDefs[]{ ..., _type == "internalLink" => { "_type": @.reference->_type , "slug": @.reference->slug.current, "type_slug": @.reference->type->slug.current } } },"type" : type -> name, "rules": rules[]{...,"type": type->name,"type_slug": type->slug.current,"origin": origin[]{page,"source": source->name}} }`;
 
-export default function Page({ item, refer}) {
+export default function Page({ item, refer = ''}) {
 	return (
 		item && <>
             <Head>
-                <title>{ item.type } - { item.name } • Biblioteca de Tóquio</title>
+                <title>{ item.type || '' } - { item.name } • Biblioteca de Tóquio</title>
             </Head>
 			<Main>
 				<Breadcumbs data={ [ { text: "Início", href: "/" } , { text: item.name, active: true } ] } />
@@ -43,8 +43,9 @@ export default function Page({ item, refer}) {
 
 
 export async function getStaticProps(context) {
-    const { type = "", slug = "" } = context.params
-    let data = null
+    const { type, slug} = context.params
+
+    let data = []
     let item = await client.fetch(query_default, { slug, type })
 
     if( item.group ){
@@ -66,7 +67,10 @@ export async function getStaticProps(context) {
 }
 
 export async function getStaticPaths() {
-    const paths = await client.fetch( query_path )
+    let paths = await client.fetch( query_path )
+    
+    paths = paths.filter( path => path.slug !== null && path.type !== null )
+
     return {
         paths: paths.map((item) => ({ params: { ...item } })),
         fallback: true

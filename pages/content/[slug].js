@@ -21,6 +21,7 @@ function countRules(data = []){
 export default function Page({ data }) {
 	const vantagem = countRules( data ? data.vantagem : []);
 	const desvantagem = countRules( data ? data.desvantagem : [] );
+	const unica = countRules( data ? data.unica : [] )
 
 	return (
 		data && <>
@@ -41,7 +42,7 @@ export default function Page({ data }) {
 							vantagem.list.map(
 								item => 
 								<ContentPage.Column.Item key={ item }>
-									<Link href={ `/${ item.path }${ item.group ? `#${item._id}` : '' }`}><a>{ item.name }</a></Link>
+									<Link href={ `/${ item.path }${ item.group ? `#${item._id}` : '' }`}>{ item.name }</Link>
 								</ContentPage.Column.Item>
 							)
 						}
@@ -55,12 +56,26 @@ export default function Page({ data }) {
 							desvantagem.list.map(
 								item => 
 								<ContentPage.Column.Item key={ item }>
-									<Link href={ `/${ item.path }${ item.group ? `#${item._id}` : '' }`} ><a>{ item.name }</a></Link>
+									<Link href={ `/${ item.path }${ item.group ? `#${item._id}` : '' }`} >{ item.name }</Link>
 								</ContentPage.Column.Item>
 							)
 						}
 					</ContentPage.Column.List>
 				</ContentPage.Block>
+				{ unica && <ContentPage.Block>
+					<Caption>Vantagens únicas</Caption>
+					<p>São { unica.counter } vantagens únicas nesse pacote de conteúdo</p>
+					<ContentPage.Column.List>
+						{ 
+							unica.list.map(
+								item => 
+								<ContentPage.Column.Item key={ item }>
+									<Link href={ `/${ item.path }${ item.group ? `#${item._id}` : '' }`} >{ item.name }</Link>
+								</ContentPage.Column.Item>
+							)
+						}
+					</ContentPage.Column.List>
+				</ContentPage.Block> }
 			</Main>
 		</>
 	)
@@ -73,6 +88,7 @@ const query_default = groq`*[ _type == "source" && slug.current == $slug ][0]{
 	"type" : { "name": type->name, "slug": type->slug.current },
 	"vantagem": *[ _type == "rule" && ^._id in origin[].source._ref && type->slug.current == 'vantagem' ]{ name, "group": group->name, "slug" : slug.current, "type_slug" : type->slug.current } | order(slug),
 	"desvantagem": *[ _type == "rule" && ^._id in origin[].source._ref && type->slug.current == 'desvantagem' ]{ name, "group": group->name, "slug" : slug.current, "type_slug" : type->slug.current } | order(slug),
+	"unica": *[ _type == "rule" && ^._id in origin[].source._ref && type->slug.current == 'vantagem-unica' ]{ name, "group": group->name, "slug" : slug.current, "type_slug" : type->slug.current } | order(slug),
   }`
 
 export async function getStaticProps(context) {

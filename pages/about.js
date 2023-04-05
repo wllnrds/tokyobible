@@ -20,7 +20,7 @@ export default function Page() {
 				<div style={{ maxWidth: "600px" }}>
 					<Caption>Sobre o projeto</Caption>
 					<p>Meu nome é Willian e eu estou criando esse WebApp que estou chamando de <em>Biblioteca de Tóquio</em> e estou criando isso inicialmente para uso pessoal junto com meus amigos em uma futura campanha de 3D&T.</p>
-					<p>Inicalmente o que temos são Vantagens e Desvantagens de <Link href="/content"><a>alguns livros</a></Link> e uma ferramenta que permite a  <Link href="/search"><a>busca</a></Link>.</p>
+					<p>Inicalmente o que temos são Vantagens e Desvantagens de <Link href="/content">alguns livros</Link> e uma ferramenta que permite a  <Link href="/search">busca</Link>.</p>
 					<p>Ainda estou desenvolvendo tudo, mas futuramente ainda quero permitir:</p>
 					<ul>
 						<li><strong>Novos conteúdos</strong>: A ideia é incluir as vantagens únicas, kits, magias, perícias e muitas outras coisas, transformando isso numa grande base de dados, permitindo campanhas mais flúidas e dinâmicas.</li>

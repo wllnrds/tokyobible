@@ -5,11 +5,9 @@ import styles from './Content.module.scss';
 import stylesHeader from './Header.module.scss';
 
 function ContentBlock({ title = "Título ausente" , cover = "/static/images/placeholder/content.png", href = "" }){
-    return <Link href={ href }>
-        <a className={ styles.block }>
-            <div className={ styles.title }>{ title }</div>
-            <div className={ styles.cover } style={{ backgroundImage: `url('${ cover }')` }}></div>
-        </a>
+    return <Link href={ href } className={ styles.block }>
+        <div className={ styles.title }>{ title }</div>
+        <div className={ styles.cover } style={{ backgroundImage: `url('${ cover }')` }}></div>
     </Link>
 }
 

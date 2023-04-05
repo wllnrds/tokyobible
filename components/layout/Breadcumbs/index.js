@@ -9,7 +9,7 @@ function Separator(){
 export default function Caption({ data = [] }){
     const itens = data.map( (item, index) => {
         if( item.href ){
-            return <Link href={ item.href } key={ item.href }><a className={ `${ styles.item } ${ item.active && styles.active }` }>{ item.text }</a></Link>
+            return <Link href={ item.href } key={ item.href } className={ `${ styles.item } ${ item.active && styles.active }` }>{ item.text }</Link>
         }else{
             return <span key={ item.text } className={ `${ styles.item } ${ item.active && styles.active }` }>{ item.text }</span>
         }

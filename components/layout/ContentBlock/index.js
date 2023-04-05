@@ -10,13 +10,11 @@ function ContentHeader({ main, side }){
 }
 
 function ContentBlock({ title = "Título ausente" , cover = "/static/images/placeholder/content.png", href = "" }){
-    return <Link href={ href }>
-        <a className={ styles.block }>
-            <div className={ styles.title }>{ title }</div>
-            <div className={ styles.cover }>
-                <Image src={ cover } alt="Capa" width={ 1000 } height={ 654 } layout="responsive" />
-            </div>
-        </a>
+    return <Link href={ href } className={ styles.block }>
+        <div className={ styles.title }>{ title }</div>
+        <div className={ styles.cover }>
+            <Image src={ cover } alt="Capa" width={ 1000 } height={ 654 } layout="responsive" />
+        </div>
     </Link>
 }
 
