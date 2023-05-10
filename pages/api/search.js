@@ -1,5 +1,5 @@
 import groq from 'groq';
-import client from '../../client';
+import client from '/client';
 
 const query_default = groq`*[_type == "rule" && ( name match $query + "*" || group->name match $query + "*" || type->name match $query ) ][0...10]{ 
 	_id, 
